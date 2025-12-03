@@ -225,19 +225,31 @@ npm run build
 ### API Key Setup
 The app uses Google Gemini API. To use your own API key:
 
-1. Get an API key from [Google AI Studio](https://makersuite.google.com/app/apikey)
-2. Open the app in your browser
-3. The API key input will be prompted on first scan
-4. Or modify `src/App.jsx` line 41:
+1. **Get an API key** from [Google AI Studio](https://makersuite.google.com/app/apikey)
+
+2. **Set up environment variable** (Recommended):
+   ```bash
+   # Copy the example environment file
+   cp .env.example .env.local
+   
+   # Edit .env.local and add your API key
+   VITE_GEMINI_API_KEY=your_api_key_here
+   ```
+
+3. **Alternative: Modify source code**:
+   - Edit `src/App.jsx` around line 45
+   - Replace the environment variable with your key:
    ```javascript
    const apiKey = "YOUR_API_KEY_HERE";
    ```
+
+**Important**: Never commit your API key to version control. Use environment variables or keep it in `.env.local` which is gitignored.
 
 ### Customization
 - **Theme Colors**: Edit CSS variables in `src/App.jsx` styles
 - **Particle Count**: Modify line 226 in `src/App.jsx`
 - **Animation Speed**: Adjust timing in CSS keyframes (lines 339-360)
-- **API Model**: Change Gemini model in line 61
+- **API Model**: Change Gemini model in the API endpoint URL
 
 ---
 
