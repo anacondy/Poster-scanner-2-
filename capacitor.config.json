@@ -1,0 +1,17 @@
+{
+  "appId": "com.cinematic.archives",
+  "appName": "Cinematic Archives",
+  "webDir": "dist",
+  "bundledWebRuntime": false,
+  "server": {
+    "androidScheme": "https"
+  },
+  "plugins": {
+    "SplashScreen": {
+      "launchShowDuration": 2000,
+      "backgroundColor": "#0a0a1a",
+      "showSpinner": true,
+      "spinnerColor": "#9333ea"
+    }
+  }
+}

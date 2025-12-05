@@ -1,0 +1,87 @@
+name: Build and Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+
+jobs:
+  build-web:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build Web App
+        run: npm run build
+
+      - name: Create Web Archive
+        run: |
+          cd dist
+          zip -r ../cinematic-archives-web.zip .
+          cd ..
+
+      - name: Upload Web Build
+        uses: actions/upload-artifact@v4
+        with:
+          name: web-build
+          path: cinematic-archives-web.zip
+
+  create-release:
+    needs: [build-web]
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Download Web Build
+        uses: actions/download-artifact@v4
+        with:
+          name: web-build
+
+      - name: Get version from package.json
+        id: package-version
+        run: echo "version=$(node -p "require('./package.json').version")" >> $GITHUB_OUTPUT
+
+      - name: Create Release
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: v${{ steps.package-version.outputs.version }}
+          name: Release v${{ steps.package-version.outputs.version }}
+          body: |
+            ## Cinematic Archives v${{ steps.package-version.outputs.version }}
+            
+            ### Features
+            - AI-powered poster and artwork analysis using Google Gemini
+            - Cross-platform support (Web, Mobile)
+            - Optimized for 60+ FPS on all devices
+            - High refresh rate display support (90Hz, 120Hz, 144Hz)
+            - No content restrictions - analyze any type of artwork
+            - Responsive design for mobile and desktop
+            
+            ### Downloads
+            - **Web App**: Extract `cinematic-archives-web.zip` and serve the files
+            - **Live Demo**: [GitHub Pages](https://anacondy.github.io/Poster-scanner-2-/)
+            
+            ### Installation
+            See the [README](https://github.com/anacondy/Poster-scanner-2-/blob/main/README.md) for detailed installation instructions.
+          files: |
+            cinematic-archives-web.zip
+          draft: false
+          prerelease: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

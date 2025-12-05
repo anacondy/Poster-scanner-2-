@@ -1,0 +1,43 @@
+{
+  "name": "cinematic-archives",
+  "version": "2.5.0",
+  "description": "AI-powered movie poster and artwork analyzer with cross-platform support",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "lint": "echo 'No linter configured'",
+    "deploy": "npm run build",
+    "cap:sync": "npm run build && npx cap sync",
+    "cap:android": "npm run build && npx cap sync android && npx cap open android",
+    "cap:ios": "npm run build && npx cap sync ios && npx cap open ios",
+    "build:android": "npm run build && npx cap sync android",
+    "build:ios": "npm run build && npx cap sync ios"
+  },
+  "keywords": [
+    "ai",
+    "poster-scanner",
+    "image-analysis",
+    "gemini-ai",
+    "react",
+    "cross-platform"
+  ],
+  "author": "anacondy",
+  "license": "MIT",
+  "dependencies": {
+    "@capacitor/android": "^7.4.4",
+    "@capacitor/cli": "^7.4.4",
+    "@capacitor/core": "^7.4.4",
+    "@capacitor/ios": "^7.4.4",
+    "lucide-react": "^0.555.0",
+    "react": "^19.2.1",
+    "react-dom": "^19.2.1"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^5.1.1",
+    "js-yaml": "^4.1.1",
+    "terser": "^5.44.1",
+    "vite": "^7.2.6"
+  }
+}
