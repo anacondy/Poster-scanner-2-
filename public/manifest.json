@@ -2,20 +2,20 @@
   "name": "Cinematic Archives - Poster Scanner",
   "short_name": "Cinematic Archives",
   "description": "AI-powered movie poster and artwork analyzer using Google Gemini",
-  "start_url": "/Poster-scanner-2-/",
+  "start_url": "./",
   "display": "standalone",
   "background_color": "#0a0a1a",
   "theme_color": "#9333ea",
   "orientation": "any",
   "icons": [
     {
-      "src": "/Poster-scanner-2-/icon-192.png",
+      "src": "./icon-192.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "any maskable"
     },
     {
-      "src": "/Poster-scanner-2-/icon-512.png",
+      "src": "./icon-512.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any maskable"
@@ -24,13 +24,13 @@
   "categories": ["entertainment", "utilities", "productivity"],
   "screenshots": [
     {
-      "src": "/Poster-scanner-2-/screenshots/desktop.png",
+      "src": "./screenshots/desktop.png",
       "sizes": "1280x720",
       "type": "image/png",
       "form_factor": "wide"
     },
     {
-      "src": "/Poster-scanner-2-/screenshots/mobile.png",
+      "src": "./screenshots/mobile.png",
       "sizes": "750x1334",
       "type": "image/png",
       "form_factor": "narrow"
@@ -41,10 +41,10 @@
       "name": "Upload Poster",
       "short_name": "Upload",
       "description": "Upload a poster to analyze",
-      "url": "/Poster-scanner-2-/",
+      "url": "./",
       "icons": [
         {
-          "src": "/Poster-scanner-2-/upload-icon.png",
+          "src": "./upload-icon.png",
           "sizes": "96x96",
           "type": "image/png"
         }
