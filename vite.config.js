@@ -7,6 +7,7 @@ export default defineConfig({
   base: '/Poster-scanner-2-/',
   build: {
     outDir: 'dist',
+        emptyOutDir: true,
     sourcemap: false,
     minify: 'terser',
     terserOptions: {
